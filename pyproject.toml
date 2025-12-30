@@ -1,6 +1,6 @@
 [project]
 name = "jmdictpy"
-version = "0.1.0"
+version = "0.1.1"
 description = "Fast Python wrapper for JMdict with SQLite backend and automatic updates"
 readme = "README.md"
 license = {text = "MIT"}

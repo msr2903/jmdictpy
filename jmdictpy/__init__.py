@@ -11,7 +11,7 @@ Usage:
         print(entry.kanji, entry.kana, entry.senses)
 """
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 from .api import JMDict
 from .models import (

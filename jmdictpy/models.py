@@ -139,13 +139,53 @@ class NameEntry:
     translations: list[dict] = field(default_factory=list)
     
     @property
+    def primary_kanji(self) -> Optional[str]:
+        """Get primary kanji writing"""
+        return self.kanji[0].text if self.kanji else None
+    
+    @property
+    def primary_kana(self) -> Optional[str]:
+        """Get primary kana reading"""
+        return self.kana[0].text if self.kana else None
+    
+    @property
     def primary_reading(self) -> str:
-        if self.kanji:
-            return self.kanji[0].text
-        return self.kana[0].text if self.kana else ""
+        """Get primary reading (kanji or kana)"""
+        return self.primary_kanji or self.primary_kana or ""
+    
+    @property
+    def romaji(self) -> str:
+        """Get romanized name"""
+        if self.translations:
+            trans = self.translations[0].get('translation', [])
+            if trans:
+                return trans[0].get('text', '')
+        return ""
+    
+    @property
+    def name_types(self) -> list[str]:
+        """Get name types (surname, given, place, etc.)"""
+        if self.translations:
+            return self.translations[0].get('type', [])
+        return []
     
     def __str__(self):
-        return self.primary_reading
+        kanji = self.primary_kanji or ""
+        kana = self.primary_kana or ""
+        romaji = self.romaji
+        types = ", ".join(self.name_types)
+        
+        if kanji and kana:
+            result = f"{kanji}【{kana}】"
+        else:
+            result = kanji or kana
+        
+        if romaji:
+            result += f" - {romaji}"
+        if types:
+            result += f" ({types})"
+        
+        return result
 
 
 @dataclass
