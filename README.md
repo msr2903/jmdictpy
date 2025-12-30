@@ -30,7 +30,7 @@ pip install -e .
 ```python
 from jmdictpy import JMDict
 
-# Initialize (downloads ~11MB on first run)
+# Initialize (downloads ~25MB on first run)
 jmd = JMDict()
 
 # Lookup by kanji/kana
@@ -52,6 +52,11 @@ print(f"{char.literal}: {char.meanings}")
 
 # Lookup names (JMnedict)
 names = jmd.lookup_name("田中")
+for name in names[:3]:
+    print(name)
+# 田中【たなか】 - Tanaka (surname, place)
+# 田中【たなた】 - Tanata (surname)
+# 田中【たんか】 - Tanka (surname)
 ```
 
 ## API Reference
@@ -99,6 +104,17 @@ class Sense:
     fields: list[str]       # Field of use (math, comp, etc.)
     dialect: list[str]
     misc: list[str]
+
+@dataclass
+class NameEntry:
+    id: str
+    kanji: list[Kanji]
+    kana: list[Kana]
+    translations: list[dict]
+    
+    # Properties
+    romaji: str             # "Tanaka"
+    name_types: list[str]   # ["surname", "place"]
 
 @dataclass
 class LookupResult:
