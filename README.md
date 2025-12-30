@@ -1,4 +1,4 @@
-# PyJMDict
+# JMdictPy
 
 Fast Python wrapper for [jmdict-simplified](https://github.com/scriptin/jmdict-simplified) with SQLite backend and automatic updates.
 
@@ -14,21 +14,21 @@ Fast Python wrapper for [jmdict-simplified](https://github.com/scriptin/jmdict-s
 ## Installation
 
 ```bash
-pip install pyjmdict
+pip install jmdictpy
 ```
 
 Or install from source:
 
 ```bash
-git clone https://github.com/your-username/pyjmdict
-cd pyjmdict
+git clone https://github.com/your-username/jmdictpy
+cd jmdictpy
 pip install -e .
 ```
 
 ## Quick Start
 
 ```python
-from pyjmdict import JMDict
+from jmdictpy import JMDict
 
 # Initialize (downloads ~11MB on first run)
 jmd = JMDict()
@@ -60,7 +60,7 @@ names = jmd.lookup_name("田中")
 
 ```python
 JMDict(
-    db_path=None,       # Custom database path (default: ~/.pyjmdict/jmdict.db)
+    db_path=None,       # Custom database path (default: ~/.jmdictpy/jmdict.db)
     language="eng",     # Translation language
     auto_update=True,   # Check for updates on init
     memory_mode=False,  # Load DB into RAM for faster queries
@@ -96,7 +96,7 @@ class Entry:
 class Sense:
     part_of_speech: list[str]
     glosses: list[Gloss]    # Translations
-    field: list[str]        # Field of use (math, comp, etc.)
+    fields: list[str]       # Field of use (math, comp, etc.)
     dialect: list[str]
     misc: list[str]
 
@@ -113,7 +113,7 @@ class LookupResult:
 
 | Variable | Description |
 |----------|-------------|
-| `PYJMDICT_DATA_DIR` | Custom data directory (default: `~/.pyjmdict`) |
+| `JMDICTPY_DATA_DIR` | Custom data directory (default: `~/.jmdictpy`) |
 
 ### Languages
 
@@ -132,7 +132,7 @@ Supported language codes (ISO 639-2):
 
 ## Updates
 
-PyJMDict checks for updates from [jmdict-simplified releases](https://github.com/scriptin/jmdict-simplified/releases) automatically.
+JMdictPy checks for updates from [jmdict-simplified releases](https://github.com/scriptin/jmdict-simplified/releases) automatically.
 
 ```python
 # Check current version

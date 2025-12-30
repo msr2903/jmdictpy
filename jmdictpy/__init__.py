@@ -1,8 +1,8 @@
 """
-PyJMDict - Fast Python wrapper for JMdict with SQLite backend
+JMdictPy - Fast Python wrapper for JMdict with SQLite backend
 
 Usage:
-    from pyjmdict import JMDict
+    from jmdictpy import JMDict
     
     jmd = JMDict()  # Auto-downloads and builds DB on first run
     

@@ -4,7 +4,7 @@ from pathlib import Path
 import os
 
 # Data directory
-DATA_DIR = Path(os.environ.get("PYJMDICT_DATA_DIR", Path.home() / ".pyjmdict"))
+DATA_DIR = Path(os.environ.get("JMDICTPY_DATA_DIR", Path.home() / ".jmdictpy"))
 
 # Database paths
 DB_PATH = DATA_DIR / "jmdict.db"

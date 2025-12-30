@@ -1,4 +1,4 @@
-"""Tests for PyJMDict"""
+"""Tests for JMdictPy"""
 
 import json
 import tempfile
@@ -6,9 +6,9 @@ from pathlib import Path
 
 import pytest
 
-from pyjmdict.models import Entry, Kanji, Kana, Sense, Gloss, LookupResult
-from pyjmdict.database import DatabaseBuilder, Database
-from pyjmdict.version import VersionManager, VersionInfo
+from jmdictpy.models import Entry, Kanji, Kana, Sense, Gloss, LookupResult
+from jmdictpy.database import DatabaseBuilder, Database
+from jmdictpy.version import VersionManager, VersionInfo
 
 
 class TestModels:
